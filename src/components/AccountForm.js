@@ -1,8 +1,15 @@
 import React, { Component } from 'react'; 
 import {Form} from 'semantic-ui-react';
+import { AccountConsumer, } from "../providers/AccountProvider";
+
 
 export class AccountForm extends Component {
-  state = { username: "", membershipLevel: ""}
+  // state = { username: "", membershipLevel: ""}
+  // with Provider: 
+  state = { 
+    username: this.props.username, 
+    membershipLevel: this.props.membershipLevel, 
+  };
 
   handleChange = (e, {name, value}) => {
       this.setState({[name]: value})
@@ -46,5 +53,24 @@ const membershipOptions = [
   { key: "p", text: "Platinum", value: "Platinum", },
 ];
 
+// Using provider 
+// Higher ordered component - will create a new component to render the AccountForm component and pass in props so that we can use them to have the information present on the form. 
+const ConnectedAccountForm = (props) => {
+  return (
+    <AccountConsumer>
+      { value => (
+        <AccountForm 
+          { ...props }
+          // {...value} -- will also give you access to the dateJoined
+          username={value.username}
+          membershipLevel={value.membershipLevel}
+        />
+      )}
+    </AccountConsumer>
+  )
+}
 
-export default AccountForm;
+
+// export default AccountForm;
+// when you import at the top of the page, it is going to that file and rendering the default export whatever you specify, so in this file, instead of rendering the Account Form automatically, it will render the Connected Account Form first. 
+export default ConnectedAccountForm; 

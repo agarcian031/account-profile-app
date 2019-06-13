@@ -8,7 +8,7 @@ import React, {Component} from 'react';
 const AccountContext = React.createContext(); 
 
 // create an exportable consumer that can be injected into other components
-const AccountConsumer = AccountContext.Consumer; 
+export const AccountConsumer = AccountContext.Consumer; 
 
 
 // Create the provider using a traditional React.Component Class. 
