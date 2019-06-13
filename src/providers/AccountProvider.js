@@ -5,7 +5,7 @@ import React, {Component} from 'react';
 // three parts of Context API -createContext -Provider -Consumer
 // Provider will supply the information that will be used by additional components. 
 // Consumer will use the data initialized in the Provider and will then have the data be accessible. 
-const AccountContext = React.createContext(); 
+export const AccountContext = React.createContext(); 
 
 // create an exportable consumer that can be injected into other components
 export const AccountConsumer = AccountContext.Consumer; 
