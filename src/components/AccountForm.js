@@ -38,6 +38,7 @@ export class AccountForm extends Component {
 }
 
 // Array of options for the Form.Select. 
+// because it is outside, it does not belong to the class and you don't have to type this.[function]. 
 const membershipOptions = [
   { key: "b", text: "Bronze", value: "Bronze", },
   { key: "s", text: "Silver", value: "Silver", },
