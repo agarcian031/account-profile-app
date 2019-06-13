@@ -17,7 +17,9 @@ export class AccountForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault(); 
-
+    // const account = { ...this.state, };
+    // this.props.updateAccount(account);
+    this.props.updateAccount({...this.state, });
   }
 
   render() {
@@ -54,7 +56,7 @@ const membershipOptions = [
 ];
 
 // Using provider 
-// Higher ordered component - will create a new component to render the AccountForm component and pass in props so that we can use them to have the information present on the form. 
+//*** */ Higher ordered component - will create a new component to render the AccountForm component and pass in props so that we can use them to have the information present on the form. Because we are rendering the AccountForm, we now have access to the data within the entire component. 
 const ConnectedAccountForm = (props) => {
   return (
     <AccountConsumer>
@@ -64,6 +66,7 @@ const ConnectedAccountForm = (props) => {
           // {...value} -- will also give you access to the dateJoined
           username={value.username}
           membershipLevel={value.membershipLevel}
+          updateAccount={value.updateAccount}
         />
       )}
     </AccountConsumer>

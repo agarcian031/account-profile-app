@@ -17,6 +17,12 @@ class AccountProvider extends Component {
     username: "Fooman77", 
     dateJoined: "12/18/18", 
     membershipLevel: "Silver", 
+    updateAccount: (account) => this.updateAccount(account),
+  }
+
+  // needs to be put in state for it to be available throughout your application. 
+  updateAccount = (account) => {
+    this.setState({...account})
   }
 
   render() {
